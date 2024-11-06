@@ -1,11 +1,14 @@
 package com.SkillSpire.restapiv1.controllers;
 
 
+import com.SkillSpire.restapiv1.DTO.GymDto;
 import com.SkillSpire.restapiv1.DTO.UserDto;
 import com.SkillSpire.restapiv1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -34,4 +37,17 @@ public class UserController {
         UserDto updatedUser = userService.updateUserAddress(id, newAddress);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     }
+
+    // GET ALL request to retrieve all users
+    @GetMapping
+    public List<UserDto> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    // DELETE request to delete users by id
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable Integer id) {
+        userService.deleteUserById(id);
+    }
+
 }

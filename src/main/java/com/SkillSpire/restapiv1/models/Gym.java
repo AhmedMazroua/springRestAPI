@@ -3,22 +3,16 @@ package com.SkillSpire.restapiv1.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="users")
+@Table(name="gym")
 @Entity
-
-public class User {
+public class Gym {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "user_fname")
-    private String firstName;
-    @Column(name = "user_lname")
-    private String lastName;
-    @Column(name = "user_address")
+    private Long id;
     private String address;
+    private String managerName;
 }

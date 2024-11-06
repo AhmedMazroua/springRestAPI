@@ -7,8 +7,8 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class UserDto {
-    private String firstName;
-    private String lastName;
+public class GymDto {
+    private Long id;
     private String address;
+    private String managerName;
 }

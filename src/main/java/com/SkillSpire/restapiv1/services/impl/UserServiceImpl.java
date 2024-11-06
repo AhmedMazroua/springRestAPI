@@ -8,6 +8,7 @@ import com.SkillSpire.restapiv1.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,12 +32,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUserAddress(int id, String newAddress) {
-       User user = userRepository.findById(id).
-               orElseThrow( () -> new RuntimeException(
-                       "User of this ID does not exist."));
+        User user = userRepository.findById(id).
+                orElseThrow(() -> new RuntimeException(
+                        "User of this ID does not exist."));
 
-            user.setAddress(newAddress);
-            userRepository.save(user);
-            return UserMapper.userToDto(user);
+        user.setAddress(newAddress);
+        userRepository.save(user);
+        return UserMapper.userToDto(user);
     }
-}
+
+    @Override
+    public UserDto deleteUserById(int id) {
+        User user = userRepository.findById(id).
+                orElseThrow(() -> new RuntimeException(
+                        "User of this ID does not exist."));
+        userRepository.delete(user);
+        return null;
+    }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+            return List.of();
+        }
+    }
+
