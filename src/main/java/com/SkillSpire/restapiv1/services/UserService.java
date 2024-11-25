@@ -9,7 +9,7 @@ public interface UserService {
 
     UserDto getUserById(int id);
 
-    UserDto createUser(UserDto userDto);
+    UserDto createUser(UserDto userDto, int gymId);
 
     UserDto updateUserAddress(int id, String newAddress);
 

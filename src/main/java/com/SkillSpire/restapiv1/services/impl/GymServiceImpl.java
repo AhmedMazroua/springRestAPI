@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GymServiceImpl implements GymService {
@@ -52,7 +53,7 @@ public class GymServiceImpl implements GymService {
 
     @Override
     public List<GymDto> getAllGyms() {
-        return List.of();
+        return gymRepository.findAll().stream().map(GymMapper::gymToDto).collect(Collectors.toList());
     }
 }
 

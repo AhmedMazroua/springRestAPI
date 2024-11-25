@@ -21,4 +21,8 @@ public class User {
     private String lastName;
     @Column(name = "user_address")
     private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "gym_id", nullable = false)
+    private Gym gym;
 }

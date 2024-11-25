@@ -46,4 +46,10 @@ public class GymController {
     public void deleteGymById(@PathVariable Integer id) {
         gymService.deleteGymById(id);
     }
+
+    @GetMapping("/{id}/users")
+    public ResponseEntity<GymDto> getGymWithUsers(@PathVariable int id) {
+        GymDto gym = gymService.getGymById(id);
+        return ResponseEntity.ok(gym);
+    }
 }

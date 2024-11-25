@@ -19,8 +19,8 @@ public class UserController {
 
     // POST request to create a new user
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
-        UserDto createdUser = userService.createUser(userDto);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto, int gymId) {
+        UserDto createdUser = userService.createUser(userDto, gymId);
         return ResponseEntity.ok(createdUser);
     }
 
@@ -48,6 +48,12 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable Integer id) {
         userService.deleteUserById(id);
+    }
+
+    @PostMapping("/{gymId}/users")
+    public ResponseEntity<UserDto> createUserInGym(@PathVariable int gymId, @RequestBody UserDto userDto) {
+        UserDto createdUser = userService.createUser(userDto, gymId);
+        return ResponseEntity.ok(createdUser);
     }
 
 }
