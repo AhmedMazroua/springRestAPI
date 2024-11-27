@@ -1,7 +1,7 @@
 package com.SkillSpire.restapiv1.controllers;
 
 
-import com.SkillSpire.restapiv1.DTO.GymDto;
+
 import com.SkillSpire.restapiv1.DTO.UserDto;
 import com.SkillSpire.restapiv1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +50,8 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
+
+    // POST request to create users at gyms
     @PostMapping("/{gymId}/users")
     public ResponseEntity<UserDto> createUserInGym(@PathVariable int gymId, @RequestBody UserDto userDto) {
         UserDto createdUser = userService.createUser(userDto, gymId);

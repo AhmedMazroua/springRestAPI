@@ -47,6 +47,7 @@ public class GymController {
         gymService.deleteGymById(id);
     }
 
+    // POST request to retrieve gym users
     @GetMapping("/{id}/users")
     public ResponseEntity<GymDto> getGymWithUsers(@PathVariable int id) {
         GymDto gym = gymService.getGymById(id);
